@@ -5564,12 +5564,14 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 const moduleMeta = {
-  1: { t: "Foundations & Case Examples", e: "📱", sub: "Nike post, Wendy's roast, geofencing, course definition, and 3 pillars.", mcqCount: 30 },
-  2: { t: "Broader Strategy & Behavior", e: "🧠", sub: "iPanda case, Affective perspective, UGT, and traditional vs. social media equilibrium.", mcqCount: 30 },
+  1: { t: "Foundations & Case Examples", e: "📱", sub: "Nike post, Wendy's roast, geofencing, course definition, and 3 pillars.", mcqCount: 35 },
+  2: { t: "Broader Strategy & Behavior", e: "🧠", sub: "iPanda case, Affective perspective, UGT, and traditional vs. social media equilibrium.", mcqCount: 35 },
   3: { t: "Network Structures & Platforms", e: "🕸️", sub: "TikTok vs. Instagram networks, virality, customer journeys, and buyer personas.", mcqCount: 35 },
   4: { t: "Content, Listening & Formats", e: "🎧", sub: "Social listening setups, ad creative formats, promotions, and engagement times.", mcqCount: 35 },
   5: { t: "Targeting & SMM Strategy", e: "🎯", sub: "Segmentation, platform targeting options, strategy pillars, and calendars.", mcqCount: 35 },
-  6: { t: "Influencers & Social Commerce", e: "🛍️", sub: "Influencer tiers (micro/nano), parasocial connections, ROI, and social commerce growth.", mcqCount: 30 }
+  6: { t: "Influencers & Social Commerce", e: "🛍️", sub: "Influencer tiers (micro/nano), parasocial connections, ROI, and social commerce growth.", mcqCount: 35 },
+  7: { t: "Effectiveness & Optimisation", e: "📊", sub: "Social media analytics, SMART KPIs, vanity vs value metrics, UTM tags, and Stack vs. Suite trade-offs.", mcqCount: 35 },
+  8: { t: "Crisis Management & Ethics", e: "🚨", sub: "Crisis speed/participatory nature, crisis typologies, 5C model, Digital Dignity, and the TARES test.", mcqCount: 35 }
 };
 
 /* ===== SCREEN 1: HOME MAP ===== */
@@ -5596,7 +5598,7 @@ function renderHome() {
   }
   
   $('statGlobalCoins').textContent = totalCoins;
-  $('statGlobalCompleted').textContent = `${completedCount}/6`;
+  $('statGlobalCompleted').textContent = `${completedCount}/8`;
   $('statGlobalAccuracy').textContent = gradedModules > 0 ? `${Math.round(totalAccuracy/gradedModules)}%` : '0%';
   
   // Render Stages Grid
