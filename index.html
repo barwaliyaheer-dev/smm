@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Media for Marketing: RETRO CLASSIC PREP</title>
+<title>Social Media for Marketing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -4403,7 +4403,7 @@ function renderModule(mId) {
         let optsHtml = '';
         qObj.o.forEach((optText, oIdx) => {
           optsHtml += `
-            <button class="opt" onclick="checkAnswer(this, ${qObj.a}, '${qObj.e.replace(/'/g, "\'")}')">
+            <button class="opt" data-ans="${qObj.a}" data-exp="${encodeURIComponent(qObj.e)}" onclick="handleOptionClick(event)">
               <span class="opt-letter">${letters[oIdx]}</span>
               <span>${optText}</span>
             </button>
@@ -4435,10 +4435,16 @@ function renderModule(mId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function checkAnswer(btnEl, correctIdx, explanation) {
+function handleOptionClick(event) {
+  const btnEl = event.currentTarget;
   const container = btnEl.closest('.q-options');
+  if (!container) return;
+  
   const buttons = container.querySelectorAll('.opt');
   const feedbackEl = container.nextElementSibling;
+  
+  const correctIdx = parseInt(btnEl.getAttribute('data-ans'), 10);
+  const explanation = decodeURIComponent(btnEl.getAttribute('data-exp') || '');
   
   buttons.forEach(b => b.disabled = true);
   
@@ -4453,7 +4459,7 @@ function checkAnswer(btnEl, correctIdx, explanation) {
     feedbackEl.innerHTML = `<div class="feedback-head">✨ EXCELLENT! (+100 PTS)</div><div>${explanation}</div>`;
   } else {
     btnEl.classList.add('wrong');
-    buttons[correctIdx].classList.add('correct');
+    if (buttons[correctIdx]) buttons[correctIdx].classList.add('correct');
     gameState.streak = 0;
     if (gameState.lives > 0) gameState.lives -= 1;
     feedbackEl.className = 'feedback show bad';
